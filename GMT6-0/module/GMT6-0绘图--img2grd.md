@@ -36,4 +36,4 @@ gmt grdimage img.nc -Jm -Ct.cpt -O -K -Ba -BWSne -Y3.25i >> $ps
 gmt psxy -R -J -O -T >> $ps
 ```
 结果：  
-![enter description here](./images/imgmap.jpg)
+![enter description here](https://www.github.com/zhongpenggeo/Blogs/raw/master/imgmap.jpg)
