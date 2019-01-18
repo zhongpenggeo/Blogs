@@ -8,7 +8,8 @@
 DSAA的格式全称是：Golden Software ASCII Grid File Format
 This is the ASCII-based (human-readable) version of one of the raster formats used by Golden Software products (such as the Surfer series). This format is supported for both reading and writing (including create, delete, and copy). Currently the associated formats for color, metadata, and shapes are not supported.
 
-GMT本身并不支持这种格式，但是可以配合gdal使用，来转换这种格式, 因此必须安装gdal
+GMT本身并不支持这种格式，但是可以配合gdal使用，来转换这种格式, 因此必须安装gdal  
+安装方式：[GDAL安装——GMT中文社区](https://gmt-china.org/blog/gdal-ogr/)
 
 ### 转换
 - 转成DSAA
