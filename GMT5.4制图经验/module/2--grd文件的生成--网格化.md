@@ -1,8 +1,8 @@
 只有三个命令：`xyz2grd`, `surface`, `nearneighbor`
 1. xyz2grd:要求数据是等间隔的，否则绘制出来的图形有灰色条纹。
 用法: 相对比较简单，见中文文档，或百度，示例：
-```
- RR=55/145/5/60
+```shell
+RR=55/145/5/60
 FI=ETOPO1.xyz
 GRD=Li_topo.grd
 gmt xyz2grd -I1m/1m  -V $FI -G$GRD -R$RR
@@ -21,7 +21,7 @@ Smith, W. H. F., and P. Wessel, Gridding with continuous curvature splines in te
 ```
 blockmean –R245/255/20/30 –I5m –V ship.xyz > ship_5m.xyz   
 surface ship_5m.xyz –R245/255/20/30 –I5m –Gship.nc –V
-``` 
+```
 
 3. nearneighbor：对不等间隔的数据做网格化操作，使用邻近数据做计算
 用法：
