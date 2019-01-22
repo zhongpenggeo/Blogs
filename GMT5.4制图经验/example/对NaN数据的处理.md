@@ -14,6 +14,6 @@ gmt grd2xyz input.grd -sa > output.txt
 ```
 ### -d
 -d可以把某些输入的某个值当做NaN，或者输出时把NaN当做某个值处理
-#### 
+#### 用法
 > -d[i|o]nodata
 
