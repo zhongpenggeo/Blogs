@@ -1,35 +1,4 @@
----
-title: GMT+MATLAB拾取数据的边界和缩小边界 
-tags: 
-grammar_abbr: true
-grammar_table: true
-grammar_defList: true
-grammar_footnote: true
-grammar_ins: true
-grammar_mark: true
-grammar_sub: true
-grammar_sup: true
-grammar_checkbox: true
-grammar_mathjax: true
-grammar_flow: true
-grammar_sequence: true
-grammar_plot: true
-grammar_code: true
-grammar_highlight: true
-grammar_html: true
-grammar_linkify: true
-grammar_typographer: true
-grammar_video: true
-grammar_audio: true
-grammar_attachment: true
-grammar_mermaid: true
-grammar_classy: true
-grammar_cjkEmphasis: true
-grammar_cjkRuby: true
-grammar_center: true
-grammar_align: true
-grammar_tableExtra: true
----
+
 ## 问题
 1. 有一个不规则形体的散点图，需要提取它的边界（比如我有一个航磁数据，不完全是方块状的矩阵，而是一个不规则的形状，希望得到它的边界。因为一般的数据处理都要先把它网格化为矩阵，处理完后再用边界把结果切出来）；如：  
 ![enter description here](https://www.github.com/zhongpenggeo/Blogs/raw/master/imags/1545016295828.png)
@@ -47,7 +16,7 @@ grammar_tableExtra: true
 ```shell
 gmt gmtspatial poly_a.txt poly_b.txt -Si > a.txt
 gmt gmtspatial poly_b.txt poly_a.txt -Si > b.txt
-paster a.txt b.txt > poly.txt
+cat a.txt b.txt > poly.txt
 ```
 注意：由于求交集时时求poly_b.txt在poly_a.txt 里面的那一部分，所以要求两次，再拼接起来，就是它们的交集了（图中绿色部分）。
 

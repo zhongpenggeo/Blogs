@@ -200,6 +200,3 @@ gmt psconvert $PS -Tt -E600 -A
 ## 重要/基础学习资料  
 一些基础知识都在下面的网站中可以找到，非常实用。  
 [GMT中文社区](https://gmt-china.org/)    
-**更多资料**  
-[GMT目录](https://www.jianshu.com/p/321f67983c42)  
-[geotiff作为GMT的底图](https://www.jianshu.com/p/6fb09872af35)

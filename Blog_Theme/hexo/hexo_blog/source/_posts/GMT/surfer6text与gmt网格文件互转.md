@@ -1,3 +1,9 @@
+---
+title: surfer6text与gmt网格文件互转
+date: 2019-01-26 18:45:39
+categories:
+- GMT
+---
 
 ### 问题
 在surfer中，常用的一种格式是surfer6 text ascii格式，该格式以DSAA打头；是一种文本格式；   
