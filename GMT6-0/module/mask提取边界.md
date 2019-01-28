@@ -54,7 +54,8 @@ gmt mask africa_grav.xyg -R20/40/20/40 -I5m -Dall_pols.txt
 ```
 gmt mask africa_grav.xyg -R20/40/20/40 -I5m -JM10i -T -Gwhite > mask.ps
 ```
-
+## grdmask
+从多边形或数据中获得grd掩膜文件
 
 ### 参考资料：
 [mask](http://gmt.soest.hawaii.edu/doc/latest/mask.html)
