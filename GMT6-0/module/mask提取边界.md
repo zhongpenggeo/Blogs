@@ -1,5 +1,5 @@
 ---
-title: 2019-1-28-mask提取边界
+title: mask提取边界
 date：2019-1-28
 categories:
 - GMT6
