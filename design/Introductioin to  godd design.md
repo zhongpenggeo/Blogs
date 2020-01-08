@@ -1,6 +1,8 @@
 ---
 title: Introductioin to  godd design
-tags: design
+date: 2019-1-5 15:00:00
+categories: 
+- Design
 
 ---
 

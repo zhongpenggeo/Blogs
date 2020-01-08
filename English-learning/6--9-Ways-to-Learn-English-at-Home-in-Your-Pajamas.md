@@ -1,6 +1,6 @@
 1. watch TV long-running animated comedy
 2. keep a diary or blog in English
-get regular writing practice,
+     get regular writing practice,
 3. host cultural event at home, impossible
 4. play video games in English. I don't agree, because in the games, these heros always  say hte same words emotionly even you can't remember such words.
 5. attend online English classes
@@ -8,9 +8,10 @@ get regular writing practice,
 7. listen to the radio
 8. books
 9. talk to yourself
-summarize：
-总感觉很空，不切实际，只要少数有效，比如写博客和日记。
-another nine tips:
+
+#### summarize：
+   总感觉很空，不切实际，只要少数有效，比如写博客和日记。
+   another nine tips:
    1. sing karaoke
    2. **read out loud**
    3. exercise with workout videos

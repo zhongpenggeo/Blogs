@@ -1,6 +1,8 @@
 --- 
 title: Alignment
-tags:  design 
+Date: 2019-1-1 15:00:00
+categories:
+- Design 
 ---
 
 ### two keys

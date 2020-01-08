@@ -1,6 +1,8 @@
 ---
 title: Review the four design priciple
-tags: design
+date: 2019-1-10 15:00:00
+categories: 
+- Design
 
 ---
 #### Don't be afraid to 

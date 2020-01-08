@@ -1,0 +1,1 @@
+> print dir(object)

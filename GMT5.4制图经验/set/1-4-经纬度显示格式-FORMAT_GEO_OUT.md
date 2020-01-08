@@ -1,6 +1,8 @@
 命令：  
 > gmt gmtset FORMAT_GEO_MAP ddd:mm:ssF
 
+注意：如果你没有用投影，比如-JX，那么这个设置不会起作用！！！（花了一下午的时间明白这个道理）
+
 -  ddd:mmF => 35:45W
 -  ddd:mmG => 35:45 W
 -  ddd:mm:ss => 40:34:24

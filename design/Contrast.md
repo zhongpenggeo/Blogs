@@ -1,6 +1,8 @@
 ---
-title: Contrast 
-tags: design
+title: Contrasti
+date: 2019-01-02 14:00:00
+categories:
+- Design
 
 ---
 

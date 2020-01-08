@@ -1,6 +1,8 @@
 ---
 title:  Extra tips and tricks
-tags: design
+date: 2019-1-4 15:00:00
+categories:
+- esign
 
 ---
 

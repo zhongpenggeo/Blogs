@@ -1,6 +1,8 @@
 ---
 title: Proximity
-tags: design
+date: 2019-1-8 15:00:00
+categories: 
+- Design
 
 ---
 

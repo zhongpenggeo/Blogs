@@ -1,6 +1,8 @@
 ---
 title: Design with color
-tags: design
+date: 2019-1-3 15：00：00
+categories:
+- Design
 
 ---
 
