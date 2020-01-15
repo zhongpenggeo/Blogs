@@ -53,3 +53,52 @@ coll2.begin())) { // second range
 ```
 
 **事实上，每个容器还有自己独特的成员函数拥有部分algorithms的功能。比如成员函数中的remove比algorithm中的remove好用**。
+
+## 算法函数
+
+| Name | Effect Page|
+|---|---|
+| for_each()|  Performs an operation for each element|
+| count()|  Returns the number of elements| |
+| count_if()|  Returns the number of elements that match a criterion |
+| min_element()|  Returns the element with the smallest value |
+| max_element()|  Returns the element with the largest value|
+|minmax_element() |  Returns the elements with the smallest and largest value (since C++11)|
+| find()|  Searches for the first element with the passed value |
+| find_if()|  Searches for the first element that matches a criterion |
+| find_if_not()|  Searches for the first element that matches a criterion not(since C++11)|
+| search_n()| | Searches for the first n consecutive elements with certainproperties|
+|search()| Searches for the first occurrence of a subrange|
+|find_end()| Searches for the last occurrence of a subrange|
+|find_first_of()| Searches the first of several possible elements|
+|adjacent_find()| Searches for two adjacent elements that are equal (by somecriterion)|
+|equal() |Returns whether two ranges are equal|
+|is_permutation()| Returns whether two unordered ranges contain equal elements(since C++11)|
+|mismatch()| Returns the first elements of two sequences that differ|
+|lexicographica|l... Returns whether a range is lexicographically less than|
+|_compare()| another range|
+|s_sorted() |Returns whether the elements in a range are sorted (sinceC++11)|
+| is_sorted_until()|  Returns the first unsorted element in a range (since C++11) |
+| is_partitioned()|  Returns whether the elements in a range are partitioned in twogroups according to a criterion (since C++11)|
+| partition_point()|  Returns the partitioning element for a range partitioned into elements fulfilling and elements not fulfilling a predicate (since C++11)|
+| is_heap()|  Returns whether the elements in a range are sorted as a heap (since C++11)|
+| is_heap_until()|  Returns the first element in a range not sorted as a heap (since C++11)|
+| all_of()|  Returns whether all elements match a criterion (since C++11) |
+| any_of()|  Returns whether at least one element matches a criterion(since C++11)|
+| none_of()|  Returns whether none of the elements matches a criterion(since C++11) |
+
+![1579088507449](images/1579088507449.png)
+
+![1579088529270](images/1579088529270.png)
+
+![1579088539805](images/1579088539805.png)
+
+![1579088550768](images/1579088550768.png)
+
+![1579088561669](images/1579088561669.png)
+
+![1579088571277](images/1579088571277.png)
+
+![1579088584531](images/1579088584531.png)
+
+![1579088592835](images/1579088592835.png)
