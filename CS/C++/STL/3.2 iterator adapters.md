@@ -1,0 +1,22 @@
+C++标准程序库提供了一些预定义的特殊iterators：iterator adapters。  
+The following subsections introduce the following iterator adapters:
+1. Insert iterators
+2. Stream iterators
+3. Reverse iterators
+4. Move iterators (since C++11)
+
+## 1. Insert iterators
+
+| Expression| Kind of Inserter       |
+| --------------------------- | ---- |
+| back_inserter(container)| Appends in the same order by using push_back(val)|
+|front_inserter(container)| Inserts at the front in reverse order by using push_front(val)|
+|inserter(container,pos)| Inserts at pos (in the same order) by using insert(pos,val)|
+
+## 2. stream iterators
+
+## 3. reverse iterators
+
+All containers with bidirectional iterators or random-access iterators (all sequence containers except forward_list and all associative containers) can create reverse iterators via their member functions rbegin() and rend().
+Since C++11, the corresponding member functions returning read-only iterators, crbegin() and
+crend(), are also provided 
