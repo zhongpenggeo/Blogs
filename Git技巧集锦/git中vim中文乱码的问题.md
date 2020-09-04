@@ -7,7 +7,7 @@
 #### 解决办法
 在git界面右键设置编码，把locale设置为C  
 问题解决，虽然我还没确定C是什么意思，
-![image.png](https://upload-images.jianshu.io/upload_images/7955445-5b753ff93fcdfd5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png](../imags/7955445-5b753ff93fcdfd5e.png)
 
 #### 另外一种可能的解决办法
 正确的做法是到Git的安装目录下【 windows OS】找到vim配置文件：比如我的路径是E:\Program Files (x86)\Git\etc路径下vimrc文件，用vim打开，在文件头部添加一行配置项即可

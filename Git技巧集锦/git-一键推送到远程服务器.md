@@ -2,4 +2,4 @@
 > git pull origin master
 
 一键推送：  
-> git add -A && git commit -m 'xxx修改信息' && git pull && git push
+> git add -A && git commit -m 'modified' && git pull && git push
