@@ -16,6 +16,7 @@ plt.show()
 ```
 #### 保存
 ```python
+# 注意：先save再show
 plt.savefig("test.png", dpi=120)
 ```
 #### 坐标轴控制

@@ -2,6 +2,8 @@
 
 When you use `.data`, you get a new `Tensor` with `requires_grad=False`
 
+这个新的tensor和原来的tensor（即x）是共用数据的，一者改变，另一者也会跟着改变，且require s_grad = False
+
 #### .detach
 
 when you want to clone/copy a non-parameter `Tensor` without autograd. You should use `.detach()` (and [not data](https://github.com/pytorch/pytorch/issues/6990#issuecomment-384680164)) before cloning:
@@ -42,3 +44,7 @@ tensor([ 0.,  0.,  0.])
 ```
 
 即data不会改变参数的性质，而detach会。
+
+
+
+  不同点： x.data 不能被 autograd 追踪求微分，即使被改了也能错误求导，而x.detach()则不行
