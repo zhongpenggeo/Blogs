@@ -81,9 +81,3 @@ if torch.cuda.is_available():
 # tensor([1.0445], dtype=torch.float64)
 ```
 
-#### variable 与 tensor 的区别
-
-首先在变量的操作上：
-Tensor对象支持在原对象内存区域上修改数据，通过“+=”或者torch.add()方法
-而Variable不支持在原对象内存区域上修改数据
-Variable对象可求梯度，并且对Variable对象的操作，操作会被记录,可通过grad_fn属性查看上一次的操作，可通过data属性访问原始张量，grad can be implicitly created only for scalar outputs

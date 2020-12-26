@@ -17,7 +17,7 @@ supposedly like `%matplotlib notebook` but kept more up to date, in my experienc
 #### 3.
 
 ```python
-%matplotlibe inline
+%matplotlib inline
 ```
 - this only draws the images, not interactive / zoom-able but it works well. I recommend to change figure size to be bigger than the default in most cases (see notes below on how).
 
