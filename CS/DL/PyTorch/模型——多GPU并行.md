@@ -173,3 +173,7 @@ Outside: input size torch.Size([10, 5]) output_size torch.Size([10, 2])
 ## 多GPU使用
 
 参考：https://zhuanlan.zhihu.com/p/86441879
+
+https://pytorch.org/tutorials/beginner/blitz/data_parallel_tutorial.html
+
+https://pytorch.apachecn.org/docs/1.4/33.html

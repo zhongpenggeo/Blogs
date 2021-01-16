@@ -93,7 +93,23 @@ print(grad_y_x)
 
 ![image-20200804144835965](../imags/image-20200804144835965.png)
 
-#### 多元高阶导数
+#### 2.2 多元高阶导数
+
+$$ y = X^3\bigodot W$$
+
+$$y_{1,m} = W_1X_1^3+W_2X_2^3+...+W_nX_n^3$$
+
+最简单的理解是这里和多维y对一维x求导一样，只是这里的$y\neq w_1x_1$，而是它们的和，但是对于求导没有影响
+
+$$
+\frac{dy}{dx}=\\
+\begin{pmatrix}\frac{dy_1}{dx_{1,1}}& \frac{dy_{1}}{dx_{1,2}}& \cdots & \frac{dy_1}{dx_{1,n}}\\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{dy_{m}}{dx_{m,1}} & \frac{dy_{m}}{dx_{m,2}} & \cdots &\frac{dy_{m}}{dx_{m,n}}\end{pmatrix}
+$$
+
+
+
 
 ```python
 def gra_fun(X):
@@ -136,39 +152,14 @@ print(grad_y_x)
 >         [  0.,  48.]], grad_fn=<MulBackward0>),)
 > ```
 
-``
+**注意不能直接对x对二阶导数。**
 
-#### 错误的示范
 
-**下面这种应该是错误的，但我不知道为什么它的结果是对的，需要非常谨慎**
 
-```python
-gradient=torch.ones_like(x)
-grad_x = torch.autograd.grad(grad_x, X,torch.ones_like(grad_x), create_graph=True)[0]
-print(grad_x) 
-```
+结果表明，确实不能直接求二阶导。因为涉及到累加过程。如果直接求，结果是两者的累加。
 
-> ```
-> tensor([[ 48., 192.],
->         [ 12.,  48.]], grad_fn=<MulBackward0>)
-> `
-> ```
+同时发现，一阶导也不能这样计算
 
-```python
-grad_y_x = torch.autograd.grad(grad_x, X,torch.ones_like(grad_x), create_graph=True)
-print(grad_y_x) 
-```
+## 结论
 
-> ```
-> (tensor([[48., 48.],
->         [12., 12.]], grad_fn=<MulBackward0>),)
-> ```
-
-```python
-gradient=torch.ones_like(x)
-#后面加[0]可以把tuple变成tensor类型，非常重要
-grad_x = torch.autograd.grad(y, X[:,1:2],torch.ones_like(y), create_graph=True,allow_unused=True)[0]
-print(grad_x) 
-```
-
-> None
+多输入多输出的导数要分开计算，完全不能一起计算。
