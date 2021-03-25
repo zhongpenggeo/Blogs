@@ -16,6 +16,8 @@ a = torch.rand(10, requires_grad=True, device="cuda")  # a requires grad, has no
 
 ### 叶子节点的概念
 
+![img](../imags/v2-cb655159af6c57b805accc675307cdfe_720w.jpg)
+
 
 
 参考：https://discuss.pytorch.org/t/valueerror-cant-optimize-a-non-leaf-tensor/21751

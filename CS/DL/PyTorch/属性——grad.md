@@ -2,7 +2,7 @@
 
 When you use `.data`, you get a new `Tensor` with `requires_grad=False`
 
-这个新的tensor和原来的tensor（即x）是共用数据的，一者改变，另一者也会跟着改变，且require s_grad = False
+这个新的tensor和原来的tensor（即x）是共用数据的，一者改变，另一者也会跟着改变，且requires_grad = False
 
 #### .detach
 

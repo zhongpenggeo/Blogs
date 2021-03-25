@@ -1,6 +1,13 @@
+### 0. backpropagation
+
+back propagation是用来计算损失函数的梯度的。
+
+某种程度上，back propagation就是链式法则的别名
+
 
 
 #### 1. tensor的创建于属性设置
+
 关键是对要求导的量的requires_grad属性设置为true
 ```python
 #创建一个二元函数，即z=f(x,y)=x2+y2，x可求导，y设置不可求导
@@ -58,7 +65,7 @@ Y=XW+b，其中W,b就是要求倒数的变量，这里Y是一个标量，W是向
 
 ### 2.2 向量对向量求导
 
-**通过backward的第一个参数gradient来实现**
+通过backward的第一个参数gradient来实现
 
 ```python
 x = torch.tensor([[1.,2.,3.],[4.,5.,6.]],requires_grad=True)
@@ -132,7 +139,7 @@ X经过一些运算形成一个向量Y
 
 Y = f(X) = [y1, y2，…,ym]
 
-然后使用Y计算标量损失l。假设向量v恰好是标量损失l关于向量Y的梯度，如下：（注意体会这句话，这个很重要！）
+然后使用Y计算标量损失l。**假设向量v恰好是标量损失l关于向量Y的梯度**，如下：（注意体会这句话，这个很重要！）
 
 ![img](../imags/v2-0044624a73fa3d2f73c6f01049f6b76b_720w.jpg)
 

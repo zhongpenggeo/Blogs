@@ -218,7 +218,7 @@ tensor([-0.5503,  0.4926, -2.1158, -0.8303])
 >>> x.grad
 ```
 
-`detach()`：返回新的tensor，从原来的计算图中脱离；注意，这两个tensor共享相同的存储空间。所以对两者任意一个的操作会同时应用
+`detach()`：返回新的tensor，从原来的计算图中脱离；注意，这两个tensor共享相同的存储空间。所以对两者任意一个的操作会同时应用??
 
 `detach_()`：从计算图中脱离，变成叶子节点
 
@@ -251,3 +251,4 @@ tensor([[-0.5044,  0.0005],
 
 
 
+参考：https://pytorch.org/docs/stable/tensors.html?highlight=tensor#torch.Tensor
