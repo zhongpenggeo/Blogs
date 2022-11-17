@@ -1,11 +1,24 @@
 ## 原理
 #### 指针与提交
 Git有一个主分支master，另外有一个指针HEAD，HEAD指向master，而master指向提交，每次commit（提交）master都会往前一步，随着提交次数增加，master的支线也越来越长。
-![enter description here](https://www.github.com/zhongpenggeo/Blogs/raw/master/imags/1548158109913.png)  
+
+
 ### 分支
 创建新的分支时，比如创建`dev`分支，Git新建一个指针叫`dev`，指向与master相同的提交，再把`HEAD`指向`dev`，就表示当前分支在`dev`上。  
-![enter description here](https://www.github.com/zhongpenggeo/Blogs/raw/master/imags/1548158893707.png)  
+![image-20221028201024300](imags/image-20221028201024300.png)
+
+不过，从现在开始，对工作区的修改和提交就是针对`dev`分支了，比如新提交一次后，`dev`指针往前移动一步，而`master`指针不变：
+
+![git-br-dev-fd](imags/l)
+
+假如我们在`dev`上的工作完成了，就可以把`dev`合并到`master`上。Git怎么合并呢？最简单的方法，就是直接把`master`指向`dev`的当前提交，就完成了合并：
+
+![image-20221028201051996](imags/image-20221028201051996.png)
+
+
+
 #### 创建分支
+
 1. 
 > $ git checkout -b dev
 > Switched to a new branch 'dev'
@@ -41,6 +54,7 @@ Git有一个主分支master，另外有一个指针HEAD，HEAD指向master，而
 `git merge`命令用于合并指定分支到当前分支。合并后，再查看readme.txt的内容，就可以看到，和`dev`分支的最新提交是完全一样的。
 注意到上面的`Fast-forward`信息，Git告诉我们，这次合并是“快进模式”，也就是直接把master指向`dev`的当前提交，所以合并速度非常快。
 注意，不是每次都是快进模式；
+
 6. 删除`dev`分支
 > $ git branch -d dev
 
@@ -58,7 +72,7 @@ Git有一个主分支master，另外有一个指针HEAD，HEAD指向master，而
 > CONFLICT (content): Merge conflict in readme.txt
 > Automatic merge failed; fix conflicts and then commit the result.
 
-![enter description here](https://www.github.com/zhongpenggeo/Blogs/raw/master/imags/1548160158476.png)
+
 git status也可以告诉我们冲突的文件：
 > $ git status
 > On branch master
