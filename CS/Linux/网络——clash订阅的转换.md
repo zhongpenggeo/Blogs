@@ -1,10 +1,10 @@
 ### 问题
 
-订阅与clash之间无法直接套用，需要把clash转成订阅，或者把订阅转成clash
+v2ray订阅与clash之间无法直接套用，需要把clash转成订阅，或者把订阅转成clash
 
 ### 方法
 
-软件：[subconverter](https://github.com/tindy2013/subconverter/blob/master/README-cn.md#简易用法)
+软件：[subconverter](https://github.com/tindy2013/subconverter/blob/master/README-cn.md#简易用法) 或者在线 [ZJU Rule Converter](https://zjurule.xyz/)
 
 方法：（以ssr-->clash为例）
 

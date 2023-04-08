@@ -17,6 +17,8 @@ Verify password:
 'sha1:xxxxxx'
 ```
 
+输出也可能是`argon`
+
 ### 设置配置文件
 
 看了网上其他人的策略通常是直接修改配置文件 `~/.jupyter/jupyter_notebook_config.py` ，但是个人不推荐这种做法，因为这样需要改动到默认的配置文件。
@@ -32,9 +34,9 @@ Verify password:
 
 
 ```python
-c.NotebookApp.ip = 'localhost' # 指定
+c.NotebookApp.ip = '*' # 指定
 c.NotebookApp.open_browser = False # 关闭自动打开浏览器
-c.NotebookApp.port = 8888 # 端口随意指定
+c.NotebookApp.port = 20023 # 端口随意指定
 c.NotebookApp.password = u'sha1:d8334*******' # 复制前一步生成的密钥
 ```
 
@@ -55,7 +57,7 @@ $ jupyter notebook --config=jupyter_config.py
 
 
 ```bash
-$ nohup jupyter notebook --config=jupyter_config.py &
+alias jupyter_pz='nohup jupyter lab --config=~/.jupyter/jupyter_pz_config.py > ~/jupyter.log 2>&1 &'
 ```
 
 

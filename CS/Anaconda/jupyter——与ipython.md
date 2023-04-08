@@ -12,7 +12,7 @@ Jupyter 是一项基于 IPython 的开源工具，它支持各种编程语言
 
 
 
-![img](/imags/nDopAeG72Y.png)
+![img](./imags/nDopAeG72Y.png)
 
 
 

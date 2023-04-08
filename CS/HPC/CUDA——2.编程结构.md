@@ -87,6 +87,83 @@ cudaError_t cudaMemcpy(void * dst,const void * src,size_t count,
 网格和块的维度一般是二维和三维的，也就是说一个网格通常被分成二维的块，而每个块常被分成三维的线程。
 注意：dim3是手工定义的，主机端可见。uint3是设备端在执行的时候可见的，不可以在核函数运行时修改，初始化完成后uint3值就不变了。他们是有区别的！这一点必须要注意。
 
+```C
+#include <cuda_runtime.h>
+#include <stdio.h>
+__global__ void checkIndex(void)
+{
+  printf("threadIdx:(%d,%d,%d) blockIdx:(%d,%d,%d) blockDim:(%d,%d,%d)\
+  gridDim(%d,%d,%d)\n",threadIdx.x,threadIdx.y,threadIdx.z,
+  blockIdx.x,blockIdx.y,blockIdx.z,blockDim.x,blockDim.y,blockDim.z,
+  gridDim.x,gridDim.y,gridDim.z);
+}
+int main(int argc,char **argv)
+{
+  int nElem=6;
+  dim3 block(3);
+  dim3 grid((nElem+block.x-1)/block.x);
+  printf("grid.x %d grid.y %d grid.z %d\n",grid.x,grid.y,grid.z);
+  printf("block.x %d block.y %d block.z %d\n",block.x,block.y,block.z);
+  checkIndex<<<grid,block>>>();
+  cudaDeviceReset();
+  return 0;
+}
+```
+结果
+
+```
+grid.x 2 grid.y 1 grid.z 1
+block.x 3 block.y 1 block.z 1
+threadIdx:(0,0,0) blockIdx:(1,0,0) blockDim:(3,1,1)  gridDim(2,1,1)
+threadIdx:(1,0,0) blockIdx:(1,0,0) blockDim:(3,1,1)  gridDim(2,1,1)
+threadIdx:(2,0,0) blockIdx:(1,0,0) blockDim:(3,1,1)  gridDim(2,1,1)
+threadIdx:(0,0,0) blockIdx:(0,0,0) blockDim:(3,1,1)  gridDim(2,1,1)
+threadIdx:(1,0,0) blockIdx:(0,0,0) blockDim:(3,1,1)  gridDim(2,1,1)
+threadIdx:(2,0,0) blockIdx:(0,0,0) blockDim:(3,1,1)  gridDim(2,1,1)
+```
+
+检查网络和块大小
+
+```C
+#include <cuda_runtime.h>
+#include <stdio.h>
+int main(int argc,char ** argv)
+{
+  int nElem=1024;
+  dim3 block(1024);
+  dim3 grid((nElem-1)/block.x+1);
+  printf("grid.x %d block.x %d\n",grid.x,block.x);
+
+  block.x=512;
+  grid.x=(nElem-1)/block.x+1;
+  printf("grid.x %d block.x %d\n",grid.x,block.x);
+
+  block.x=256;
+  grid.x=(nElem-1)/block.x+1;
+  printf("grid.x %d block.x %d\n",grid.x,block.x);
+
+  block.x=128;
+  grid.x=(nElem-1)/block.x+1;
+  printf("grid.x %d block.x %d\n",grid.x,block.x);
+
+  cudaDeviceReset();
+  return 0;
+}
+```
+
+
+
+结果
+
+```
+grid.x 1 block.x 1024
+grid.x 2 block.x 512
+grid.x 4 block.x 256
+grid.x 8 block.x 128
+```
+
+
+
 ### 声明
 
 在函数前增加修饰词来指定。
@@ -96,6 +173,9 @@ cudaError_t cudaMemcpy(void * dst,const void * src,size_t count,
 | __host__   | CPU      | CPU      |
 | __global__ | GPU      | CPU      |
 | __device__ | GPU      | GPU      |
+
+
+
 
 __global__描述的函数就是“被CPU调用，在GPU上运行的代码”，同时它也打通了__host__和__device__修饰的函数。__global__修饰的函数是被异步执行的。__global__修饰的函数只能是void类型。我们假设其可以有返回值，则其调用者是可以捕获这个值的。但是__global__函数是异步调用的，当函数返回时，接受返回值的变量可能已经被销毁了。所以设计其有返回值也没太多意义。
 
