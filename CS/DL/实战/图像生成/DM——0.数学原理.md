@@ -2,17 +2,19 @@
 
 > diffusion model 与之前的生成模型（e.g. GAN）有很大区别，关键在于它们是用“去噪”的步骤来分解图像生成的过程。
 
-它的思路（refining the representation）再alphafold中就已经使用了。但是这种思路是有代价的：slow at sampling，至少相对于[GANs](https://theaisummer.com/gan-computer-vision/)来说是这样。
+它的思路（refining the representation）在alphafold中就已经使用了。但是这种思路是有代价的：slow at sampling，至少相对于[GANs](https://theaisummer.com/gan-computer-vision/)来说是这样。
 
 ### Diffusion process
 
 前向过程：给输入图像 $\boldsymbol{x}_0$ 加入 $T$ 步的高斯噪声，这一步可以和NN无关（用于生成后面需要的数据）
 
-反向过程：然后训练NN通过逆转噪声生成来回复数据；也可被称为 sampling process of generative model。
+反向过程：然后训练NN通过逆转噪声生成来恢复数据；也可被称为 sampling process of generative model。
+
+参见[图解生成式学习——diffusion model](生成式学习——Diffusion-model.md)
 
 ### Forward Diffusion
 
-diffusion model可以被看作 `latent variable models`。Latent指的是 hidden continuous feature space，有点类似VAE。在实践中，由 $T$步的马尔科夫链组成，马尔科夫链代表每一步只依赖于前一步。
+diffusion model可以被看作 `latent variable models`。Latent指的是 hidden continuous feature space，有点类似VAE。在实践中，由 $T$ 步的马尔科夫链组成，马尔科夫链代表每一步只依赖于前一步。
 
 给定一个从数据分布 $q(x)$ 采样得到的  $\boldsymbol{x}_0$ ，（ $\boldsymbol{x}_0 \sim q(x)$ )。每一步马尔可夫链中，向  $\boldsymbol{x}_{t-1}$ 加入与变量 $\beta_t$相关的高斯噪声，得到新的 latent variable  $\boldsymbol{x}_t$ 
 $$
@@ -20,7 +22,7 @@ q( \boldsymbol{x}_t|\boldsymbol{x}_{t-1} ) = \mathcal N (\boldsymbol{x}_t;\bolds
 $$
 ![forward-diffusion](./imags/forward-diffusion.png)
 
-因此，从输入数据 $\boldsymbol{x}_0$ 到 $\boldsymbol{x}_t$ 是一个可追踪过程，这是一个后验概率
+因此，从输入数据 $\boldsymbol{x}_0$ 到 $\boldsymbol{x}_t$ 是一个可追踪（tractable）过程，这是一个后验概率
 $$
 q( \boldsymbol{x}_{1:T}|\boldsymbol{x}_{0} ) = \prod^T_{t=1}q( \boldsymbol{x}_t|\boldsymbol{x}_{t-1} ) 
 $$
@@ -53,7 +55,7 @@ $\beta_t$可以定义在一个常数，或者是在 $T$ 上规律变化，比如
 
 ### Reverse diffusion
 
-在 $T\rightarrow \infty$ 时， $\boldsymbol{x}_T$ 接近 [isotropic](https://math.stackexchange.com/questions/1991961/gaussian-distribution-is-isotropic#:~:text=TLDR%3A An isotropic gaussian is,Σ is the covariance matrix.) Gaussian distribution。如果我们成功学到了逆向分布 $q(\boldsymbol{x}_{t-1}|\boldsymbol{x}_t)$，就可以从 $\mathcal{N}(0,\mathbf{I})$中采样  $\boldsymbol{x}_T$ 并运行 reverse process 从而得到 $q( \boldsymbol{x}_0)$中的采样。关键在于如何获得逆向过程
+在 $T\rightarrow \infty$ 时， $\boldsymbol{x}_T$ 接近 [isotropic](https://math.stackexchange.com/questions/1991961/gaussian-distribution-is-isotropic#:~:text=TLDR%3A An isotropic gaussian is,Σ is the covariance matrix.) Gaussian distribution。如果我们成功学到了逆向分布 $q(\boldsymbol{x}_{t-1}|\boldsymbol{x}_t)$，就可以从 $\mathcal{N}(0,\mathbf{I})$中采样 $\boldsymbol{x}_T$ 并运行 reverse process 从而得到 $q( \boldsymbol{x}_0)$中的采样。关键在于**如何获得逆向过程**
 
 #### 用NN
 
@@ -82,7 +84,7 @@ $$
 
 1. $\mathbb{E}_{q(x_1 \mid x_0)}[\log p_\theta(\mathbf{x}_0\mathbf{x}_1)]$是一个reconstruction term，与variational autoencoder类似，可以用一个separate decoder 学习（[Ho et al 2020](https://arxiv.org/abs/2006.11239) ）
 2. 第二项$D_{K L}\left(q\left(\mathbf{x}_T \mid \mathbf{x}_0\right)|| p\left(\mathbf{x}_T\right)\right)$衡量 $\boldsymbol{x}_T$ 与标准高斯的举例，这里没有需要学习的参数（无需训练）
-3. $\sum_{t=2}^T L_{t-1}$ 衡量希望的去噪步骤 $p_\theta\left(\mathbf{x}_{t-1} \mid \mathbf{x}_t\right)$ 和 近似项 $q(\mathbf{x}_{t-1} \mid \mathbf{x}_t,\mathbf{x}_0)$ 之间的差距。
+3. $\sum_{t=2}^T L_{t-1}$ 衡量 希望的去噪步骤 $p_\theta\left(\mathbf{x}_{t-1} \mid \mathbf{x}_t\right)$ 和 近似项 $q(\mathbf{x}_{t-1} \mid \mathbf{x}_t,\mathbf{x}_0)$ 之间的差距。
 
 In other words, we can sample $\mathbf{x}_t$ at noise level $t$ conditioned on $\mathbf{x}_0$
 $$
@@ -104,6 +106,8 @@ $$
 预期预测分布的均值 $\mu$，不如直接预测噪声 $\epsilon$
 
 #### 算法
+
+参考[算法详解](./DM——0.2.算法详解.md)
 
 ![training-sampling-ddpm](./imags/training-sampling-ddpm.png)
 
@@ -130,7 +134,7 @@ $$
 p_\theta(\boldsymbol{x}_{0:T}|y)=p_\theta(\boldsymbol{x}_T)\prod^T_{t=1}p_\theta(\boldsymbol{x}_{t-1}|\boldsymbol{x}_t,y)
 $$
 
-每一步都需要conditioning有助于获得高质量samples from a text promt；
+**每一步**都需要conditioning有助于获得高质量samples from a text promt；
 
 目标是学到 $\nabla\log p_\theta(\boldsymbol{x}_t|Y)$ （为啥这是目标？using gradients of the data distribution estimated with score matching），通过贝叶斯规则：
 $$
